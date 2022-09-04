@@ -34,6 +34,9 @@ public class Grid {
             case "Recursive Backtracking":
                 current = new RecursiveBacktracking(gridArray);
                 break;
+            case "Eller's Algorithm":
+                current = new EllersAlgorithm(gridArray);
+                break;
         }
         if (current != null) {
             current.generate();    
