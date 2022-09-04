@@ -12,12 +12,12 @@ public class Cell extends JPanel {
     private int leftBorder;
     private int bottomBorder;
     private int rightBorder;
+    private boolean visited;
 
     public Cell(int row, int col) {
         this.row = row;
         this.col = col;
-        topBorder = leftBorder = bottomBorder = rightBorder = 1;
-        setBorders();
+        setToDefault();
     }
 
     @Override
@@ -31,6 +31,10 @@ public class Cell extends JPanel {
     
     public int getColumn() {
         return col;
+    }
+
+    public boolean getVisited() {
+        return visited;
     }
 
     public int getBorder(String direction) {
@@ -48,7 +52,35 @@ public class Cell extends JPanel {
         }
     }
 
+    public void setToDefault() {
+        topBorder = leftBorder = bottomBorder = rightBorder = 1;
+        setBorders();
+        visited = false;
+    }
+    
+    public void setVisited(boolean visited) {
+        this.visited = visited;
+    }
+    
     private void setBorders() {
         setBorder(BorderFactory.createMatteBorder(topBorder, leftBorder, bottomBorder, rightBorder, Color.black));
+    }
+
+    public void removeBorder(String direction) {
+        switch (direction) {
+            case "top": // north
+                topBorder = 0;
+                break;
+            case "left": // west
+                leftBorder = 0;
+                break;
+            case "bottom": // south
+                bottomBorder = 0;
+                break;
+            case "right": // east
+                rightBorder = 0;
+                break;
+        }
+        setBorders();
     }
 }

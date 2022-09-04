@@ -7,10 +7,11 @@ import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.Component;
 import java.awt.Font;
+import grid.Grid;
 
 public class Header extends JPanel {
     
-    public Header() {
+    public Header(Grid grid) {
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 
         JLabel title = new JLabel("Maze Visualizer");
@@ -27,7 +28,7 @@ public class Header extends JPanel {
         JButton generateButton = new JButton();
         generateButton.setText("Generate maze");
         generateButton.setFocusable(false);
-        // generateButton.addActionListener(e -> grid.generateMaze((String) algoSelector.getSelectedItem()));
+        generateButton.addActionListener(e -> grid.generateMaze((String) algoSelector.getSelectedItem()));
         programOptions.add(generateButton);
 
         this.add(programOptions);

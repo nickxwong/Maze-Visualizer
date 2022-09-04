@@ -12,8 +12,8 @@ public class Frame {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.setLayout(new BorderLayout());
-
-        JPanel header = new Header();
+        
+        JPanel header = new Header(grid);
         JPanel maze = new Maze(grid);
 
         frame.add(header, BorderLayout.NORTH);
