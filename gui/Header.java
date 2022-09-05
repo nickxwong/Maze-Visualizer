@@ -9,6 +9,7 @@ import java.awt.Component;
 import java.awt.Font;
 import grid.Grid;
 
+
 public class Header extends JPanel {
     
     public Header(Grid grid) {
