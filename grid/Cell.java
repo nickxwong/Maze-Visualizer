@@ -18,6 +18,7 @@ public class Cell extends JPanel {
         this.row = row;
         this.col = col;
         setToDefault();
+        setBackground(Color.white);
     }
 
     @Override
