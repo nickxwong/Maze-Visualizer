@@ -30,6 +30,9 @@ public class Grid {
                 gridArray[row][col].setToDefault();
             }
         }
+        // clear player position
+        gridArray[playerRow][playerCol].setBackground(Color.white);
+        playerRow = playerCol = 0;
     }
 
     public void generateMaze(String algorithm) {
