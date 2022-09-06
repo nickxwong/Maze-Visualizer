@@ -11,7 +11,7 @@ public class EllersAlgorithm implements Algorithm {
         this.gridArray = gridArray;
     }
 
-    public void generate() {
+    public void run() {
         Map<Integer, Integer> cells = new HashMap<>(); // maps each cell to the set it belongs to 
         Map<Integer, Set<Integer>> sets = new HashMap<>(); // maps each set to an array of cells
         int setIndex = 0;
@@ -30,11 +30,13 @@ public class EllersAlgorithm implements Algorithm {
             Set<Integer> curSet = sets.getOrDefault(setID, new HashSet<Integer>());
             curSet.add(col);
             sets.put(setID, curSet);
+            gridArray[0][col].setVisited(true); // mark cell as visited 
         }
         // randomly add vertical connections to the next row (at least one per set)
         // cells that are not vertically connected are put into their own set
         for (int row = 1; row < gridArray.length; row++) {
             for (int col = 0; col < numCols; col++) {
+                gridArray[row][col].setVisited(true); // mark cell as visited
                 Set<Integer> curSet = sets.get(cells.get(col));
                 if (curSet.size() == 1 || getRandom()) {
                     mergeCell(gridArray[row - 1][col], "bottom");

@@ -1,5 +1,5 @@
 package algorithms;
 
 public interface Algorithm {
-    public void generate();
+    public void run();
 }

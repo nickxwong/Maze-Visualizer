@@ -18,7 +18,6 @@ public class Cell extends JPanel {
         this.row = row;
         this.col = col;
         setToDefault();
-        setBackground(Color.white);
     }
 
     @Override
@@ -57,6 +56,7 @@ public class Cell extends JPanel {
         topBorder = leftBorder = bottomBorder = rightBorder = 1;
         setBorders();
         visited = false;
+        setBackground(Color.white);
     }
     
     public void setVisited(boolean visited) {
@@ -71,15 +71,19 @@ public class Cell extends JPanel {
         switch (direction) {
             case "top": // north
                 topBorder = 0;
+                // top.setText("0");
                 break;
             case "left": // west
                 leftBorder = 0;
+                // left.setText("0");
                 break;
             case "bottom": // south
                 bottomBorder = 0;
+                // bottom.setText("0");
                 break;
             case "right": // east
                 rightBorder = 0;
+                // right.setText("0");
                 break;
         }
         setBorders();

@@ -32,6 +32,12 @@ public class Header extends JPanel {
         generateButton.addActionListener(e -> grid.generateMaze((String) algoSelector.getSelectedItem()));
         programOptions.add(generateButton);
 
+        JButton solveButton = new JButton();
+        solveButton.setText("Solve");
+        solveButton.setFocusable(false);
+        solveButton.addActionListener(e -> grid.solveMaze());
+        programOptions.add(solveButton);
+
         this.add(programOptions);
     }
 

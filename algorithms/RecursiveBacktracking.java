@@ -11,7 +11,7 @@ public class RecursiveBacktracking implements Algorithm {
         this.gridArray = gridArray;
     }
 
-    public void generate() {
+    public void run() {
         Stack<AbstractMap.SimpleEntry<Integer, Integer>> visitedCells = new Stack<>();
         helper(visitedCells, 0, 0);
     }

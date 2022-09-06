@@ -47,7 +47,7 @@ public class Grid {
                 break;
         }
         if (current != null) {
-            current.generate();
+            current.run();
             setPlayer(gridArray[playerRow][playerCol], null);
             setEndpoint(gridArray[gridArray.length - 1][gridArray[0].length - 1]);   
         }
@@ -78,6 +78,11 @@ public class Grid {
 
     public void setPlayerCol(int amount) {
         playerCol += amount;
+    }
+
+    public void solveMaze() {
+        Algorithm current = new Djikstra(gridArray);
+        current.run();
     }
 
 }
