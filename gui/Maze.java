@@ -15,6 +15,7 @@ public class Maze extends JPanel {
 
     Grid grid;
     Cell[][] gridArray;
+    private boolean userHasMoved;
     private final Action upAction;
     private final Action leftAction;
     private final Action downAction;
@@ -23,6 +24,8 @@ public class Maze extends JPanel {
     public Maze(Grid grid) {
         this.grid = grid;
         gridArray = grid.getArray();
+
+        userHasMoved = false;
 
         setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.black));
         setLayout(new GridLayout(gridArray.length, gridArray[0].length));
@@ -53,10 +56,18 @@ public class Maze extends JPanel {
         }
     }
 
+    private void checkIfFirstAction() {
+        if (!userHasMoved) {
+            grid.solveMaze();
+            userHasMoved = true;
+        }
+    }
+
     public class UpAction extends AbstractAction {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            checkIfFirstAction();
             int playerRow = grid.getPlayerRow();
             int playerCol = grid.getPlayerCol();
             if (gridArray[playerRow][playerCol].getBorder("top") == 0) {
@@ -71,6 +82,7 @@ public class Maze extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            checkIfFirstAction();
             int playerRow = grid.getPlayerRow();
             int playerCol = grid.getPlayerCol();
             if (gridArray[playerRow][playerCol].getBorder("left") == 0) {
@@ -85,6 +97,7 @@ public class Maze extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            checkIfFirstAction();
             int playerRow = grid.getPlayerRow();
             int playerCol = grid.getPlayerCol();
             if (gridArray[playerRow][playerCol].getBorder("bottom") == 0) {
@@ -99,6 +112,7 @@ public class Maze extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            checkIfFirstAction();
             int playerRow = grid.getPlayerRow();
             int playerCol = grid.getPlayerCol();
             if (gridArray[playerRow][playerCol].getBorder("right") == 0) {
