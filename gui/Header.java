@@ -9,10 +9,9 @@ import java.awt.Component;
 import java.awt.Font;
 import grid.Grid;
 
-
 public class Header extends JPanel {
     
-    public Header(Grid grid) {
+    public Header(Frame frame, Grid grid) {
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 
         JLabel title = new JLabel("Maze Visualizer");
@@ -32,11 +31,11 @@ public class Header extends JPanel {
         generateButton.addActionListener(e -> grid.generateMaze((String) algoSelector.getSelectedItem()));
         programOptions.add(generateButton);
 
-        JButton solveButton = new JButton();
-        solveButton.setText("Solve");
-        solveButton.setFocusable(false);
-        solveButton.addActionListener(e -> grid.solveMaze());
-        programOptions.add(solveButton);
+        JButton tutorialButton = new JButton();
+        tutorialButton.setText("Tutorial");
+        tutorialButton.setFocusable(false);
+        tutorialButton.addActionListener(e -> frame.runTutorial(true));
+        programOptions.add(tutorialButton);
 
         this.add(programOptions);
     }
