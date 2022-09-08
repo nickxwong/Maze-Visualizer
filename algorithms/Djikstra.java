@@ -47,7 +47,12 @@ public class Djikstra implements Algorithm {
             }
             // due to the maze generation algorithm already marking each cell as visited, Djikstra will treat "visited" cells as unvisited
             gridArray[curRow][curCol].setVisited(false);
-            gridArray[curRow][curCol].setBackground(Color.blue);
+            // set background 
+            if (gridArray[curRow][curCol].getBackground() == Color.white) { // if cell has not yet been visited by the player
+                gridArray[curRow][curCol].setBackground(new Color(240, 240, 245));
+            } else { // if the cell has already been visited by the player
+                gridArray[curRow][curCol].setBackground(new Color(255, 255, 204));
+            }
             int curDistance = map.get(new AbstractMap.SimpleEntry<Integer, Integer>(curRow, curCol));
             if (curRow == 0 && curCol == 0) {
                 findShortestPath(0, 0, map.get(new AbstractMap.SimpleEntry<Integer, Integer>(0, 0)));
@@ -140,7 +145,7 @@ public class Djikstra implements Algorithm {
     }
 
     private void addToPath(int row, int col) {
-        gridArray[row][col].setBackground(Color.yellow);
+        gridArray[row][col].setBackground(new Color (255, 255, 153));
     }
 
 }

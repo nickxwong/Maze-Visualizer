@@ -60,9 +60,14 @@ public class Grid {
     }
 
     public void setPlayer(Cell newCell, Cell oldCell) {
-        newCell.setBackground(Color.yellow);
+        newCell.setBackground(new Color(209, 224, 224));
         if (oldCell != null) {
-            oldCell.setBackground(Color.white);    
+            if (oldCell.getVisited()) { // if the cell has been visited by the pathfinding algorithm
+                oldCell.setBackground(new Color(225, 234, 234)); 
+            } else { // if the cell hasn't been visited by the pathfinding algorithm
+                oldCell.setBackground(new Color(255, 255, 204));
+            }
+            
         }
     }
 
