@@ -1,17 +1,20 @@
 package algorithms;
 
-import grid.Cell;
+import grid.*;
 import javax.swing.SwingWorker;
+import javax.swing.JOptionPane;
 import java.util.*;
 import java.awt.Color;
 
 public class Djikstra implements Algorithm {
-
+    
+    private Grid grid;
     private Cell[][] gridArray;
     private Map<AbstractMap.SimpleEntry<Integer, Integer>, Integer> map;
     
-    public Djikstra(Cell[][] gridArray) {
-        this.gridArray = gridArray;
+    public Djikstra(Grid grid) {
+        this.grid = grid;
+        gridArray = grid.getArray();
         map = new HashMap<>();
     }
 
@@ -26,13 +29,22 @@ public class Djikstra implements Algorithm {
                 return null;
             }
 
+            @Override
+            protected void done() {
+                String resultDialog = (grid.getPlayerFinished()) ? "You won!" : "You lost :(";
+                JOptionPane.showMessageDialog(null, resultDialog);
+                grid.clearGrid();
+            }
         };
+
         worker.execute();
     }
 
     public void calculateDistance(int curRow, int curCol) {
         try {
-            Thread.sleep(100);
+            if (!grid.getPlayerFinished()) {
+                Thread.sleep(150);
+            }
             // due to the maze generation algorithm already marking each cell as visited, Djikstra will treat "visited" cells as unvisited
             gridArray[curRow][curCol].setVisited(false);
             gridArray[curRow][curCol].setBackground(Color.blue);

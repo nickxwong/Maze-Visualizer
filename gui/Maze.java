@@ -15,7 +15,6 @@ public class Maze extends JPanel {
 
     Grid grid;
     Cell[][] gridArray;
-    private boolean userHasMoved;
     private final Action upAction;
     private final Action leftAction;
     private final Action downAction;
@@ -24,8 +23,6 @@ public class Maze extends JPanel {
     public Maze(Grid grid) {
         this.grid = grid;
         gridArray = grid.getArray();
-
-        userHasMoved = false;
 
         setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.black));
         setLayout(new GridLayout(gridArray.length, gridArray[0].length));
@@ -57,9 +54,15 @@ public class Maze extends JPanel {
     }
 
     private void checkIfFirstAction() {
-        if (!userHasMoved) {
+        if (grid.getPlayerNotStarted()) {
             grid.solveMaze();
-            userHasMoved = true;
+            grid.setPlayerNotStarted(false);
+        }
+    }
+
+    private void checkIfFinished() {
+        if (grid.getPlayerRow() == gridArray.length - 1 && grid.getPlayerCol() == gridArray[0].length - 1) {
+            grid.setPlayerFinished(true);
         }
     }
 
@@ -74,6 +77,7 @@ public class Maze extends JPanel {
                 grid.setPlayer(gridArray[playerRow - 1][playerCol], gridArray[playerRow][playerCol]);
                 grid.setPlayerRow(-1);
             }
+            checkIfFinished();
         }
 
     }
@@ -89,6 +93,7 @@ public class Maze extends JPanel {
                 grid.setPlayer(gridArray[playerRow][playerCol - 1], gridArray[playerRow][playerCol]);
                 grid.setPlayerCol(-1);
             }
+            checkIfFinished();
         }
 
     }
@@ -104,6 +109,7 @@ public class Maze extends JPanel {
                 grid.setPlayer(gridArray[playerRow + 1][playerCol], gridArray[playerRow][playerCol]);
                 grid.setPlayerRow(1);
             }
+            checkIfFinished();
         }
 
     }
@@ -119,6 +125,7 @@ public class Maze extends JPanel {
                 grid.setPlayer(gridArray[playerRow][playerCol + 1], gridArray[playerRow][playerCol]);
                 grid.setPlayerCol(1);
             }
+            checkIfFinished();
         }
 
     }
