@@ -10,6 +10,7 @@ public class Grid {
     private int playerCol;
     private boolean playerNotStarted;
     private boolean playerFinished;
+    private Djikstra pathfindingAlgo;
     
     public Grid() {
         gridArray = new Cell[20][20];
@@ -29,6 +30,10 @@ public class Grid {
     }
 
     public void clearGrid() {
+        // clear pathfinding algorithm if needed
+        if (pathfindingAlgo != null) {
+            pathfindingAlgo.cancel();
+        }
         for (int row = 0; row < gridArray.length; row++) {
             for (int col = 0; col < gridArray[0].length; col++) {
                 gridArray[row][col].setToDefault();
@@ -72,7 +77,7 @@ public class Grid {
     }
 
     private void setEndpoint(Cell cell) {
-        cell.setBackground(Color.red);
+        cell.setBackground(new Color(240, 240, 245));
     }
 
     public int getPlayerRow() {
@@ -108,8 +113,8 @@ public class Grid {
     }
 
     public void solveMaze() {
-        Algorithm current = new Djikstra(this);
-        current.run();
+        pathfindingAlgo = new Djikstra(this);
+        pathfindingAlgo.run();
     }
 
 }
