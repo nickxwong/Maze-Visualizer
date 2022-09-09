@@ -22,6 +22,7 @@ public class Frame {
         frame.add(header, BorderLayout.NORTH);
         frame.add(maze, BorderLayout.CENTER);
         frame.pack();
+        maze.requestFocusInWindow();
         frame.setVisible(true);
 
         runTutorial(false);
