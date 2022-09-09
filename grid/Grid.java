@@ -48,17 +48,19 @@ public class Grid {
 
     public void generateMaze(String algorithm) {
         clearGrid();
-        Algorithm current = null;
+        Algorithm generationAlgorithm = null;
         switch (algorithm) {
             case "Recursive Backtracking":
-                current = new RecursiveBacktracking(gridArray);
+                generationAlgorithm = new RecursiveBacktracking(gridArray);
                 break;
             case "Eller's Algorithm":
-                current = new EllersAlgorithm(gridArray);
+                generationAlgorithm = new EllersAlgorithm(gridArray);
                 break;
+            case "Prim's Algorithm":
+                generationAlgorithm = new PrimsAlgorithm(gridArray); 
         }
-        if (current != null) {
-            current.run();
+        if (generationAlgorithm != null) {
+            generationAlgorithm.run();
             setPlayer(gridArray[playerRow][playerCol], null);
             setEndpoint(gridArray[gridArray.length - 1][gridArray[0].length - 1]);   
         }

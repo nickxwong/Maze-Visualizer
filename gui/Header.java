@@ -21,7 +21,7 @@ public class Header extends JPanel {
 
         JPanel programOptions = new JPanel();
 
-        String[] generationAlgo = {"Recursive Backtracking", "Eller's Algorithm"};
+        String[] generationAlgo = {"Recursive Backtracking", "Eller's Algorithm", "Prim's Algorithm"};
         JComboBox<String> algoSelector = new JComboBox<>(generationAlgo);
         programOptions.add(algoSelector);
 
