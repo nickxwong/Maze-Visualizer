@@ -12,6 +12,7 @@ public class Frame {
     
     public Frame(Grid grid) {
         frame = new JFrame();
+        frame.setTitle("Maze Visualizer");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.setLayout(new BorderLayout());
