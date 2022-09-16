@@ -29,19 +29,19 @@ public class Maze extends JPanel {
         addGrid();
 
         upAction = new UpAction();
-        getInputMap().put(KeyStroke.getKeyStroke('w'), "upAction");
+        getInputMap().put(KeyStroke.getKeyStroke("UP"), "upAction");
         getActionMap().put("upAction", upAction);
 
         leftAction = new LeftAction();
-        getInputMap().put(KeyStroke.getKeyStroke('a'), "leftAction");
+        getInputMap().put(KeyStroke.getKeyStroke("LEFT"), "leftAction");
         getActionMap().put("leftAction", leftAction);
 
         downAction = new DownAction();
-        getInputMap().put(KeyStroke.getKeyStroke('s'), "downAction");
+        getInputMap().put(KeyStroke.getKeyStroke("DOWN"), "downAction");
         getActionMap().put("downAction", downAction);
 
         rightAction = new RightAction();
-        getInputMap().put(KeyStroke.getKeyStroke('d'), "rightAction");
+        getInputMap().put(KeyStroke.getKeyStroke("RIGHT"), "rightAction");
         getActionMap().put("rightAction", rightAction);
     }
 
